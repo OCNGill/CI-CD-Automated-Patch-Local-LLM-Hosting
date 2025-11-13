@@ -1,9 +1,9 @@
-﻿# CI/CD Automated Patch Generation v1.1
+﻿# CI/CD Automated Patch Generation v1.1.1
 ## Local LLM-Powered Self-Healing Agent
 
-> **Note**: My robot is still learning. 🤖
+> **Note**: My robot is still learning. 🤖 (But he never forgets who made him!)
 
-**Atlas v1.1** is a local-first CI/CD error detection and self-healing agent with complete Streamlit GUI. Use your own Ollama server to diagnose and fix pipeline failures—no cloud required, complete privacy.
+**Atlas v1.1.1** is a local-first CI/CD error detection and self-healing agent with complete Streamlit GUI. Use your own Ollama server to diagnose and fix pipeline failures—no cloud required, complete privacy.
 
 ---
 
@@ -48,7 +48,7 @@ Open your browser to: **http://localhost:8501**
 
 ## 📚 Key Features
 
-### 🎨 Streamlit Web Interface
+### �� Streamlit Web Interface
 - **Dashboard**: Agent status, project selector, active model
 - **Workflow**: Full Propose → Verify → Apply pipeline
 - **Performance**: Track iterations, confidence scores, patch history
@@ -72,7 +72,7 @@ Open your browser to: **http://localhost:8501**
 
 ## 🛠️ Configuration
 
-Edit **tlas_core/config/llm_config.yaml**:
+Edit **`atlas_core/config/llm_config.yaml`**:
 
 ```yaml
 llm_endpoints:
@@ -92,11 +92,11 @@ target_repos:
 
 ## 📖 Documentation
 
-- **Full Docs**: See [docs/](docs/) folder
-- **Security Guide**: [SECURITY.md](SECURITY.md)
-- **Public Setup**: [PUBLIC_SETUP.md](PUBLIC_SETUP.md)
-- **LLM Integration**: [docs/llm_integration.md](docs/llm_integration.md)
-- **Hardware Setup**: [docs/hardware_setup.md](docs/hardware_setup.md)
+- **Full Docs**: See [`docs/`](docs/) folder
+- **Security Guide**: [`SECURITY.md`](SECURITY.md)
+- **Public Setup**: [`PUBLIC_SETUP.md`](PUBLIC_SETUP.md)
+- **LLM Integration**: [`docs/llm_integration.md`](docs/llm_integration.md)
+- **Hardware Setup**: [`docs/hardware_setup.md`](docs/hardware_setup.md)
 
 ---
 
@@ -133,15 +133,6 @@ MIT License - See [LICENSE](LICENSE) file
 
 ---
 
-## 💖 Support the Project
-
-If you find this helpful, consider supporting ongoing development!
-
-- **PayPal**: https://paypal.me/gillsystems
-- **Venmo**: https://venmo.com/Stephen-Gill-007
-
----
-
 ## 🎓 Learn More
 
 - 🔗 [Ollama Model Library](https://ollama.com/library)
@@ -153,3 +144,30 @@ If you find this helpful, consider supporting ongoing development!
 **Remember**: This is a local-first tool. Your code, your compute, your control. 🚀
 
 > *My robot is still learning, but it's getting smarter every day!* 🤖
+
+---
+
+## 💖 Support / Donate
+
+If you find this project helpful, you can support ongoing work — thank you!
+
+<p align=\"center\"">
+    <img src=\"images/qr-paypal.png\" alt=\"PayPal QR code\" width=\"180\" style=\"margin:8px;\">
+    <img src=\"images/qr-venmo.png\" alt=\"Venmo QR code\" width=\"180\" style=\"margin:8px;\">
+</p>
+
+**Donate:**
+
+- [![PayPal](https://img.shields.io/badge/PayPal-Donate-009cde?logo=paypal&logoColor=white)](https://paypal.me/gillsystems) https://paypal.me/gillsystems
+- [![Venmo](https://img.shields.io/badge/Venmo-Donate-3d95ce?logo=venmo&logoColor=white)](https://venmo.com/Stephen-Gill-007) https://venmo.com/Stephen-Gill-007
+
+---
+
+<p align=\"center\">
+    <img src=\"images/Gillsystems_logo_with_donation_qrcodes.png\" alt=\"Gillsystems logo with QR codes and icons\" width=\"800\">
+</p>
+
+<p align=\"center\">
+    <a href=\"https://paypal.me/gillsystems\"><img src=\"images/paypal_icon.png\" alt=\"PayPal\" width=\"32\" style=\"vertical-align:middle;\"></a>
+    <a href=\"https://venmo.com/Stephen-Gill-007\"><img src=\"images/venmo_icon.png\" alt=\"Venmo\" width=\"32\" style=\"vertical-align:middle;\"></a>
+</p>

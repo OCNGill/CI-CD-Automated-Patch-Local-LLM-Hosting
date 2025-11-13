@@ -77,15 +77,15 @@ Edit **`atlas_core/config/llm_config.yaml`**:
 ```yaml
 llm_endpoints:
   local:
-    url: \"http://127.0.0.1:11434/v1/chat/completions\"
-    model: \"codellama:7b-instruct\"
+    url: "http://127.0.0.1:11434/v1/chat/completions"
+    model: "codellama:7b-instruct"
     enabled: true
 
 target_repos:
   MyProject:
-    build_command: \"pytest tests/ -v\"
+    build_command: "pytest tests/ -v"
     test_commands:
-      - \"pytest tests/\"
+      - "pytest tests/"
 ```
 
 ---
@@ -151,9 +151,9 @@ MIT License - See [LICENSE](LICENSE) file
 
 If you find this project helpful, you can support ongoing work — thank you!
 
-<p align=\"center\"">
-    <img src=\"images/qr-paypal.png\" alt=\"PayPal QR code\" width=\"180\" style=\"margin:8px;\">
-    <img src=\"images/qr-venmo.png\" alt=\"Venmo QR code\" width=\"180\" style=\"margin:8px;\">
+<p align="center">
+    <img src="images/qr-paypal.png" alt="PayPal QR code" width="180" style="margin:8px;">
+    <img src="images/qr-venmo.png" alt="Venmo QR code" width="180" style="margin:8px;">
 </p>
 
 **Donate:**
@@ -163,11 +163,12 @@ If you find this project helpful, you can support ongoing work — thank you!
 
 ---
 
-<p align=\"center\">
-    <img src=\"images/Gillsystems_logo_with_donation_qrcodes.png\" alt=\"Gillsystems logo with QR codes and icons\" width=\"800\">
+<p align="center">
+    <img src="images/Gillsystems_logo_with_donation_qrcodes.png" alt="Gillsystems logo with QR codes and icons" width="800">
 </p>
 
-<p align=\"center\">
-    <a href=\"https://paypal.me/gillsystems\"><img src=\"images/paypal_icon.png\" alt=\"PayPal\" width=\"32\" style=\"vertical-align:middle;\"></a>
-    <a href=\"https://venmo.com/Stephen-Gill-007\"><img src=\"images/venmo_icon.png\" alt=\"Venmo\" width=\"32\" style=\"vertical-align:middle;\"></a>
+<p align="center">
+    <a href="https://paypal.me/gillsystems"><img src="images/paypal_icon.png" alt="PayPal" width="32" style="vertical-align:middle;"></a>
+    <a href="https://venmo.com/Stephen-Gill-007"><img src="images/venmo_icon.png" alt="Venmo" width="32" style="vertical-align:middle;"></a>
 </p>
+

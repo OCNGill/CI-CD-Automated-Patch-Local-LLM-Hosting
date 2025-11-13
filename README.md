@@ -1,108 +1,155 @@
-# Atlas CI/CD Auto-fixer Agent
+﻿# CI/CD Automated Patch Generation v1.1
+## Local LLM-Powered Self-Healing Agent
 
-## Overview
-**Atlas is an autonomous, safety-first GitHub Actions workflow error detection and self-healing agent. It monitors CI/CD pipeline failures, diagnoses root causes, and proposes or applies fixes using LLM-powered patch generation. Atlas is designed for dual-repo integration, robust audit trails, and human-in-the-loop safety controls.**
+> **Note**: My robot is still learning. 🤖
 
----
-
-## Core Philosophy: Local-First and Secure
-
-A fundamental design principle of Atlas is that **your code and your compute stay on your machine.**
-
-- **No Cloud Dependency:** Unlike cloud-based AI assistants, Atlas is built to run entirely within your own environment. It uses your local hardware (e.g., a GPU running an Ollama server) to perform all analysis and code generation.
-- **Your Data Stays Private:** Your source code, error logs, and other proprietary data are never sent to a third-party service. All operations happen within the security of your local network.
-- **You Control the Model:** You have complete control over which Large Language Model is used, allowing you to choose models that are optimized for code, run efficiently on your hardware, and meet your security requirements.
-
-Atlas is not a cloud service; it is a **self-hosted, private, and specialized AI agent** that you control.
-
-For deployment and security best-practices see `SECURITY.md` (local-first defaults, GitHub token guidance, and network exposure recommendations).
-
-Per-user setup: When other users download Atlas they should configure their own `atlas_core/config/llm_config.yaml` and use a per-user copy of `Atlas-GUI/launch.bat` or `Atlas-GUI/README_ATLAS_GUI.md` as a template. Do not commit machine-specific secrets into the repo.
+**Atlas v1.1** is a local-first CI/CD error detection and self-healing agent with complete Streamlit GUI. Use your own Ollama server to diagnose and fix pipeline failures—no cloud required, complete privacy.
 
 ---
 
-## Key Features
-- **OpenAI-compatible LLM integration** (local or cloud)
-- **Propose → Verify → Refine → Apply** patch lifecycle
-- **Temporary git worktree verification** (no main branch pollution)
-- **Manual confirmation and rollback controls**
-- **Append-only JSONL provenance logging**
-- **Streamlit UI** for operator review, patch approval, and rollback
-- **Windows-first workflows** (PowerShell, conda, ROCm installer integration)
-- **Tested on Radeon 7900 XTX/7600 hardware**
+## ✨ What's New in v1.1
+
+- 🎨 **Complete Streamlit Web UI** with 6 functional tabs
+- 🔐 **Localhost-only defaults** for maximum security
+- 🎯 **Multi-project support** with dropdown selector
+- 📊 **Live Ollama integration** for model management
+- 🚀 **Production-ready** with safety controls and audit trails
 
 ---
 
-## Documentation
-- **Quick Start & AI Agent Guide:** `.github/copilot-instructions.md`
-- **LLM API & Iteration:** [`docs/llm_integration.md`](docs/llm_integration.md)
-- **Patch Lifecycle & Rollback:** [`docs/patch_lifecycle.md`](docs/patch_lifecycle.md)
-- **Hardware Setup (ROCm, GPUs):** [`docs/hardware_setup.md`](docs/hardware_setup.md)
-- **Streamlit UI Workflows:** [`docs/ui_workflows.md`](docs/ui_workflows.md)
+## 🚀 Quick Start
+
+### Prerequisites
+- Python 3.10+
+- [Ollama](https://ollama.com/) installed and running
+- Git for version control
+
+### Installation
+
+```powershell
+# Clone the repository
+git clone https://github.com/OCNGill/CI-CD-Automated-Patch-Local-LLM-Hosting.git
+cd CI-CD-Automated-Patch-Local-LLM-Hosting
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Pull a code model
+ollama pull codellama:7b-instruct
+
+# Launch the GUI
+cd Atlas-GUI
+.\launch.bat
+```
+
+Open your browser to: **http://localhost:8501**
 
 ---
 
-## Getting Started
-1. **Clone this repo**
-2. **Set up your LLM server** (see `docs/hardware_setup.md`)
-3. **Configure Atlas** (`atlas_core/config/llm_config.yaml`)
-4. **Integrate with your target repo** (see `.github/copilot-instructions.md`)
-5. **Start the Streamlit UI** for manual review (see `docs/ui_workflows.md`)
+## 📚 Key Features
+
+### 🎨 Streamlit Web Interface
+- **Dashboard**: Agent status, project selector, active model
+- **Workflow**: Full Propose → Verify → Apply pipeline
+- **Performance**: Track iterations, confidence scores, patch history
+- **Configuration**: Select and manage LLM models
+- **History & Rollback**: Git viewer with one-click rollback
+- **Get More Models**: Download models from Ollama library
+
+### 🔐 Security & Privacy
+- ✅ **100% Local** - No cloud dependencies
+- ✅ **Privacy-First** - Your code never leaves your machine
+- ✅ **Manual Controls** - All patches require confirmation
+- ✅ **Complete Audit Trail** - JSONL logs + git commits
+
+### 🎯 Technical Highlights
+- OpenAI-compatible API (works with Ollama, LM Studio, vLLM)
+- Git worktree verification (no main branch pollution)
+- Multi-repository support
+- Windows-first design with ROCm GPU support
 
 ---
 
-## Release Notes
-### v0.1.69 (Initial Release)
-- Full dual-repo architecture (agent + target integration)
-- Canonical propose → verify → refine → apply patch loop
-- OpenAI-compatible LLM API (local/cloud)
-- Streamlit UI for patch review, manual override, and rollback
-- Append-only JSONL provenance and multi-layer audit trail
-- Windows-first, ROCm installer integration, tested on Radeon 7900 XTX/7600
-- Modular documentation in `docs/`
+## 🛠️ Configuration
+
+Edit **tlas_core/config/llm_config.yaml**:
+
+```yaml
+llm_endpoints:
+  local:
+    url: \"http://127.0.0.1:11434/v1/chat/completions\"
+    model: \"codellama:7b-instruct\"
+    enabled: true
+
+target_repos:
+  MyProject:
+    build_command: \"pytest tests/ -v\"
+    test_commands:
+      - \"pytest tests/\"
+```
 
 ---
 
-## Contributing
-- See `.github/copilot-instructions.md` for AI agent and developer onboarding
-- All patches and rollbacks require manual confirmation by default
-- Please open issues or PRs for feature requests and bug reports
+## 📖 Documentation
+
+- **Full Docs**: See [docs/](docs/) folder
+- **Security Guide**: [SECURITY.md](SECURITY.md)
+- **Public Setup**: [PUBLIC_SETUP.md](PUBLIC_SETUP.md)
+- **LLM Integration**: [docs/llm_integration.md](docs/llm_integration.md)
+- **Hardware Setup**: [docs/hardware_setup.md](docs/hardware_setup.md)
 
 ---
 
-## License
-[MIT License](LICENSE)
+## 🆘 Troubleshooting
+
+**GUI won't start?**
+- Ensure port 8501 is available
+- Run: `pip install -r Atlas-GUI/requirements.txt`
+
+**Models not loading?**
+- Verify Ollama is running: `ollama list`
+- Check endpoint: `curl http://127.0.0.1:11434/api/tags`
+
+**YAML config errors?**
+- Ensure you're running from repo root
+- Check file exists: `atlas_core/config/llm_config.yaml`
 
 ---
 
-## Maintainer
-- [OCNGill](https://github.com/OCNGill)
+## 🤝 Contributing
+
+This is a community project! Issues and PRs welcome.
+
+**To report issues**:
+1. Check existing issues first
+2. Provide error logs and steps to reproduce
+3. Tag with appropriate labels
 
 ---
 
-## 💖 Support / Donate
+## 📜 License
 
-If you find this project helpful, you can support ongoing work — thank you!
-
-<p align="center">
-	<img src="images/qr-paypal.png" alt="PayPal QR code" width="180" style="margin:8px;">
-	<img src="images/qr-venmo.png" alt="Venmo QR code" width="180" style="margin:8px;">
-</p>
-
-
-**Donate:**
-
-- [![PayPal](https://img.shields.io/badge/PayPal-Donate-009cde?logo=paypal&logoColor=white)](https://paypal.me/gillsystems) https://paypal.me/gillsystems
-- [![Venmo](https://img.shields.io/badge/Venmo-Donate-3d95ce?logo=venmo&logoColor=white)](https://venmo.com/Stephen-Gill-007) https://venmo.com/Stephen-Gill-007
+MIT License - See [LICENSE](LICENSE) file
 
 ---
 
+## 💖 Support the Project
 
-<p align="center">
-	<img src="images/Gillsystems_logo_with_donation_qrcodes.png" alt="Gillsystems logo with QR codes and icons" width="800">
-</p>
+If you find this helpful, consider supporting ongoing development!
 
-<p align="center">
-	<a href="https://paypal.me/gillsystems"><img src="images/paypal_icon.png" alt="PayPal" width="32" style="vertical-align:middle;"></a>
-	<a href="https://venmo.com/Stephen-Gill-007"><img src="images/venmo_icon.png" alt="Venmo" width="32" style="vertical-align:middle;"></a>
-</p>
+- **PayPal**: https://paypal.me/gillsystems
+- **Venmo**: https://venmo.com/Stephen-Gill-007
+
+---
+
+## 🎓 Learn More
+
+- 🔗 [Ollama Model Library](https://ollama.com/library)
+- 🔗 [Streamlit Documentation](https://docs.streamlit.io/)
+- 🔗 [Project Repository](https://github.com/OCNGill/CI-CD-Automated-Patch-Local-LLM-Hosting)
+
+---
+
+**Remember**: This is a local-first tool. Your code, your compute, your control. 🚀
+
+> *My robot is still learning, but it's getting smarter every day!* 🤖

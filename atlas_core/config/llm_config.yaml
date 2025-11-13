@@ -1,0 +1,77 @@
+﻿---
+# Atlas LLM Configuration
+# Local-First Public Template - Customize for your setup
+
+llm_endpoints:
+  local:
+    # Local-only default: Ollama on your machine
+    # CUSTOMIZE: Change to your LLM server address if different
+    url: "http://127.0.0.1:11434/v1/chat/completions"
+    model: "codellama:7b-instruct"  # or your preferred model
+    enabled: true
+    timeout_seconds: 300
+
+  cloud:
+    url: ""
+    model: ""
+    enabled: false
+    api_key_env: ""
+
+iteration:
+  max_retries: 3
+  confidence_threshold: 0.5
+  timeout_seconds: 300
+
+verification:
+  worktree_prefix: "atlas-verify-"
+  cleanup_on_success: true
+  cleanup_on_failure: false
+  build_timeout_seconds: 600
+  test_timeout_seconds: 300
+  max_retries: 3
+  retry_on_transient_errors: true
+
+safety:
+  enable_auto_apply: false
+  enable_master_push: false
+  require_manual_confirmation: true
+
+target_repos:
+  # Example configuration for 7D Agile integration
+  7D_Agile_System:
+    build_command: "python -m pytest tests/ -v"
+    test_commands:
+      - "pytest tests/ --cov=. --cov-report=term-missing"
+      - "python -m pylint **/*.py"
+
+rollback:
+  auto_detect_ci_failure: true
+  require_manual_confirmation: true
+  ui_display_recent_commits: 10
+  show_confidence_scores: true
+
+  time_based_monitoring:
+    enabled: false
+    window_hours: 24
+    stability_threshold: 0.95
+    metrics_endpoint: ""
+
+  github_integration:
+    enabled: true
+    annotate_on_rollback: true
+    tag_maintainers: true
+
+hardware:
+  primary_gpu:
+    model: "YOUR_GPU_MODEL_HERE"  # e.g., "Radeon RX 7600", "RTX 4090", etc.
+    vram_gb: 8  # Adjust to your GPU's VRAM
+    recommended_models: ["codellama:7b", "mistral:7b-instruct"]
+    max_batch_size: 2
+
+  llm_server:
+    # Local-only default - LLM server on your machine
+    # CUSTOMIZE: Change these if you run LLM server on another machine
+    host: "127.0.0.1"
+    port: 11434
+    protocol: "http"
+    timeout_seconds: 300

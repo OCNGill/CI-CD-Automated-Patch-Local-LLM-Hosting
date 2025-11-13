@@ -1,0 +1,16 @@
+﻿# Atlas CI/CD Auto-Fixer Agent - Python Dependencies
+# Compatible with Python 3.10+
+
+# Core Dependencies
+pyyaml>=6.0
+requests>=2.31.0
+streamlit>=1.28.0
+
+# Testing and Quality
+pytest>=7.4.0
+pytest-cov>=4.1.0
+pylint>=3.0.0
+
+# Optional: For advanced features
+# github3.py>=3.2.0  # GitHub API integration
+# python-dotenv>=1.0.0  # Environment variable management
